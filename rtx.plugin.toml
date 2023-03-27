@@ -1,0 +1,4 @@
+[list-legacy-filenames]
+data = """
+.ruby-version Gemfile
+"""
