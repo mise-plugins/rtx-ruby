@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-RUBY_BUILD_VERSION="${ASDF_RUBY_BUILD_VERSION:-v20230309}"
+RUBY_BUILD_VERSION="${RTX_RUBY_BUILD_VERSION:-v20230309}"
 RUBY_BUILD_TAG="$RUBY_BUILD_VERSION"
 
 echoerr() {
@@ -39,7 +39,7 @@ ensure_ruby_build_installed() {
 }
 
 download_ruby_build() {
-  # Print to stderr so asdf doesn't assume this string is a list of versions
+  # Print to stderr so rtx doesn't assume this string is a list of versions
   echoerr "Downloading ruby-build..."
   # shellcheck disable=SC2155
   local build_dir="$(ruby_build_source_dir)"
@@ -61,16 +61,16 @@ download_ruby_build() {
   rm -rf "$build_dir"
 }
 
-asdf_ruby_plugin_path() {
+rtx_ruby_plugin_path() {
   # shellcheck disable=SC2005
   echo "$(dirname "$(dirname "$0")")"
 }
 ruby_build_dir() {
-  echo "$(asdf_ruby_plugin_path)/ruby-build"
+  echo "$(rtx_ruby_plugin_path)/ruby-build"
 }
 
 ruby_build_source_dir() {
-  echo "$(asdf_ruby_plugin_path)/ruby-build-source"
+  echo "$(rtx_ruby_plugin_path)/ruby-build-source"
 }
 
 ruby_build_path() {

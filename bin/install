@@ -14,7 +14,7 @@ install_ruby() {
 
   if [ "$install_type" != "version" ]; then
     echoerr "Cannot install specific ref from source, sorry."
-    echoerr "For a list of available versions, see \`asdf list-all ruby\`"
+    echoerr "For a list of available versions, see \`rtx ls-remote ruby\`"
     exit 1
   fi
 
@@ -83,8 +83,8 @@ get_absolute_path() {
 
 install_default_gems() {
   local args=()
-  local default_gems="${ASDF_GEM_DEFAULT_PACKAGES_FILE:=$HOME/.default-gems}"
-  local gem="${ASDF_INSTALL_PATH}/bin/gem"
+  local default_gems="${RTX_GEM_DEFAULT_PACKAGES_FILE:=$HOME/.default-gems}"
+  local gem="${RTX_INSTALL_PATH}/bin/gem"
 
   if [ ! -f "$default_gems" ]; then
     return
@@ -125,5 +125,5 @@ install_default_gems() {
   done <"$default_gems"
 }
 
-install_ruby "$ASDF_INSTALL_TYPE" "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
+install_ruby "$RTX_INSTALL_TYPE" "$RTX_INSTALL_VERSION" "$RTX_INSTALL_PATH"
 install_default_gems
