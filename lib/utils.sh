@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+curl_opts=(-fsSL)
+
+if [ -n "${GITHUB_API_TOKEN:-}" ]; then
+	curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
+fi
+
 RUBY_BUILD_VERSION="${RTX_RUBY_BUILD_VERSION:-}"
 if [ "$RUBY_BUILD_VERSION" = "" ]; then
   RUBY_BUILD_VERSION="$(
-    curl --silent "https://api.github.com/repos/rbenv/ruby-build/releases/latest" |
+    curl "${curl_opts[@]}" "https://api.github.com/repos/rbenv/ruby-build/releases/latest" |
     grep '"tag_name":' |
     sed -E 's/.*"([^"]+)".*/\1/'
   )"
