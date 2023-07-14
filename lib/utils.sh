@@ -61,7 +61,7 @@ download_ruby_build() {
   rm -rf "$build_dir"
 
   # Clone down and checkout the correct ruby-build version
-  git clone https://github.com/rbenv/ruby-build.git "$build_dir" >/dev/null 2>&1
+  git clone "${RTX_RUBY_BUILD_REPO:-https://github.com/rbenv/ruby-build.git}" "$build_dir" >/dev/null 2>&1
   (
     cd "$build_dir" || exit
     git checkout "$RUBY_BUILD_TAG" >/dev/null 2>&1
