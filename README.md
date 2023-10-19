@@ -30,7 +30,7 @@ RUBY_APPLY_PATCHES=$(curl -s https://raw.githubusercontent.com/rvm/rvm/master/pa
 Running `rtx plugin-update ruby` will update rtx-ruby and ensure the latest versions of ruby are available to install. By default rtx-ruby uses the latest release of ruby-build, however instead you can choose your own branch/tag through the `RTX_RUBY_BUILD_VERSION` variable:
 
 ```
-RTX_RUBY_BUILD_VERSION=master rtx install ruby 2.6.4
+RTX_RUBY_BUILD_VERSION=master rtx install ruby@2.6.4
 ```
 
 ## Default gems
